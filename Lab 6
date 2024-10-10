@@ -1,0 +1,95 @@
+1. 
+
+try:
+    with open('numbers.txt', 'r') as file:
+        numbers = file.readlines()
+        for number in numbers:
+            print(number.strip())
+except FileNotFoundError:
+    print("The file 'numbers.txt' does not exist.")
+except ValueError:
+    print("The file contains non-integer values.")
+
+----------------------------------------------------------------------
+
+2. 
+
+filename = input("Enter the name of the file: ")
+
+try:
+    file = open(filename, 'r')
+
+    for i in range(5):
+        line = file.readline()
+        if not line:
+            break
+        print(line.strip())
+
+    file.close()
+
+except FileNotFoundError:
+    print("The file does not exist.")
+
+----------------------------------------------------------------------
+
+3. 
+
+filename = input("Enter the name of the file: ")
+
+try:
+    file = open(filename, 'r')
+
+    for i in range(5):
+        line = file.readline()
+        if line == "":  # Check if the line is empty (end of file)
+            break
+        print(line.strip())  # Remove extra spaces and print the line
+
+    file.close()
+
+except FileNotFoundError:
+    print("The file does not exist.")
+
+----------------------------------------------------------------------
+
+5.
+
+total = 0
+
+try:
+    with open('numbers.txt', 'r') as file:
+        for line in file:
+            number = int(line.strip())  # Convert line to integer
+            total += number  # Add to total
+
+    print("The total is:", total)
+
+except FileNotFoundError:
+    print("The file 'numbers.txt' does not exist.")
+except ValueError:
+    print("The file contains non-integer values.")
+
+----------------------------------------------------------------------
+
+6. 
+
+total = 0
+count = 0
+
+try:
+    with open('numbers.txt', 'r') as file:
+        for line in file:
+            number = int(line.strip())  # Convert line to integer
+            total += number  # Add to total
+            count += 1  # Increment count of numbers
+
+    if count > 0:
+        average = total / count  # Calculate average
+        print("The average is:", average)
+    else:
+        print("No numbers found in the file.")
+
+except FileNotFoundError:
+    print("The file 'numbers.txt' does not exist.")
+except ValueError:
+    print("The file contains non-integer values.")
